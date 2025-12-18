@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7-jammy
+    container_name: bmw-cars-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: bmw-cars
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./backend/src/seeders:/docker-entrypoint-initdb.d
+    networks:
+      - bmw-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bmw-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/bmw-cars?authSource=admin
+      FRONTEND_URL: http://localhost:5173
+      JWT_SECRET: your-super-secret-jwt-key-here-change-in-production
+      API_VERSION: v1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - bmw-network
+    command: npm run dev
+
+  # Frontend React App
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: bmw-frontend
+    restart: unless-stopped
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - bmw-network
+    command: npm run dev
+
+volumes:
+  mongodb_data:
+
+networks:
+  bmw-network:
+    driver: bridge

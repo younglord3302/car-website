@@ -1,46 +1,220 @@
-# Getting Started with Create React App
+# 🚗 BMW-Style Multi-Page Car Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sophisticated full-stack automotive website built with modern web technologies, featuring BMW-inspired design and functionality.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- **Multi-page Architecture**: Homepage, Models, Design, Innovation, Services, About, Contact
+- **Interactive Car Models**: Searchable and filterable car listings with detailed specifications
+- **BMW-Inspired Design**: Premium aesthetic with custom Tailwind CSS styling
+- **Responsive Layout**: Mobile-first design that works on all devices
+- **Modern Animations**: Smooth transitions and micro-interactions with Framer Motion
+- **Full-Stack Setup**: React frontend with Express.js backend and MongoDB
+- **TypeScript**: Type-safe development throughout the application
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Frontend
+- **React 19** with TypeScript
+- **React Router** for navigation
+- **Tailwind CSS** for styling
+- **Framer Motion** for animations
+- **Lucide React** for icons
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Backend
+- **Node.js** with Express.js
+- **TypeScript** for type safety
+- **MongoDB** with Mongoose
+- **JWT** for authentication
+- **CORS** and **Helmet** for security
 
-### `npm test`
+## 🚀 Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- MongoDB (local or cloud instance)
+- Docker & Docker Compose (optional, for containerized setup)
 
-### `npm run build`
+### Quick Start with Docker 🐳
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The easiest way to get started is using Docker Compose:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone the repository
+git clone <repository-url>
+cd car-website
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Copy environment file
+cp backend/.env.example backend/.env
 
-### `npm run eject`
+# Start all services
+docker-compose up -d
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Access the application
+# Frontend: http://localhost:5173
+# Backend API: http://localhost:5000
+# MongoDB: localhost:27017
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Manual Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd car-website
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. **Install Frontend Dependencies**
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
 
-## Learn More
+3. **Install Backend Dependencies**
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Environment Setup**
+   ```bash
+   cd backend
+   cp .env.example .env
+   # Edit .env with your MongoDB URI and other settings
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. **Start MongoDB**
+   Make sure MongoDB is running locally or update your `.env` with a cloud MongoDB URI.
+
+### Running the Application
+
+#### Option 1: Development Mode
+1. **Start the Backend API**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+   The API will be available at `http://localhost:5000`
+
+2. **Start the Frontend** (in a new terminal)
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+   The website will be available at `http://localhost:5173`
+
+#### Option 2: Production Mode
+1. **Build and start the backend**
+   ```bash
+   cd backend
+   npm run build
+   npm start
+   ```
+
+2. **Build and start the frontend**
+   ```bash
+   cd frontend
+   npm run build
+   npm run preview  # or serve the dist folder with any static server
+   ```
+
+## 📁 Project Structure
+
+```
+car-website/
+├── frontend/                # React frontend application
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   │   └── Header.tsx  # Navigation header
+│   │   ├── pages/          # Page components
+│   │   │   ├── Homepage.tsx    # Landing page
+│   │   │   ├── Models.tsx      # Car models listing
+│   │   │   └── AdminPanel.tsx  # Admin management
+│   │   ├── App.tsx         # Main app component with routing
+│   │   └── main.tsx        # App entry point
+│   ├── public/             # Static assets
+│   ├── package.json        # Frontend dependencies
+│   └── vite.config.ts      # Vite build configuration
+├── backend/                # Node.js API server
+│   ├── src/
+│   │   ├── controllers/    # Route controllers
+│   │   ├── models/         # MongoDB models
+│   │   ├── routes/         # API routes
+│   │   ├── middleware/     # Custom middleware
+│   │   └── server.ts       # Express server
+│   ├── package.json        # Backend dependencies
+│   └── .env.example        # Environment variables template
+├── README.md               # Project documentation
+└── package-lock.json       # Root dependencies lockfile
+```
+
+## 🎨 Design Features
+
+- **BMW Color Palette**: Custom blue theme with premium color scheme
+- **Typography**: Inter font family for modern, clean text
+- **Animations**: Smooth page transitions and hover effects
+- **Responsive Grid**: Adaptive layouts for all screen sizes
+- **Premium Cards**: Elevated design with subtle shadows and hover states
+
+## 🔧 Available Scripts
+
+### Frontend
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run eject` - Eject from Create React App
+
+### Backend
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Compile TypeScript to JavaScript
+- `npm start` - Start production server
+- `npm test` - Run tests
+
+## 🌐 API Endpoints
+
+- `GET /api/health` - Health check
+- `GET /api/cars` - Get all cars (currently returns mock data)
+- More endpoints coming as features are developed
+
+## 🚧 Development Roadmap
+
+- [x] Project setup and architecture
+- [x] Basic routing and navigation
+- [x] Homepage with hero section
+- [x] Models page with filtering
+- [x] Backend API structure
+- [ ] Car configurator component
+- [ ] Image galleries and carousels
+- [ ] MongoDB data models
+- [ ] User authentication
+- [ ] Admin panel for content management
+- [ ] Advanced search and filtering
+- [ ] Performance optimization
+- [ ] SEO optimization
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📄 License
+
+This project is for educational purposes. BMW is a trademark of Bayerische Motoren Werke AG.
+
+## 🆘 Support
+
+If you encounter any issues, please check:
+1. Node.js version compatibility
+2. MongoDB connection
+3. Environment variables configuration
+4. Port availability (3000 for frontend, 5000 for backend)
+
+---
+
+Built with ❤️ for automotive enthusiasts

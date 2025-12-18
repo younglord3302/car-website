@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-bmw-text font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-bmw-blue hover:bg-bmw-dark text-white font-medium px-6 py-3 rounded-sm transition-colors duration-200 uppercase tracking-wide text-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-bmw-blue text-bmw-blue hover:bg-bmw-blue hover:text-white font-medium px-6 py-3 rounded-sm transition-all duration-200 uppercase tracking-wide text-sm;
+  }
+
+  .hero-text {
+    @apply text-5xl md:text-7xl font-bold text-bmw-text leading-tight;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-bmw-text mb-6;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300;
+  }
+
+  .nav-link {
+    @apply text-bmw-text hover:text-bmw-blue font-medium transition-colors duration-200 uppercase tracking-wide text-sm px-4 py-2;
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-margin {
+    @apply mx-4 sm:mx-6 lg:mx-8;
+  }
+
+  /* Touch-friendly interactions */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Mobile navigation */
+  .mobile-menu {
+    @apply fixed inset-0 z-50 bg-white transform transition-transform duration-300 ease-in-out;
+  }
+
+  .mobile-menu-closed {
+    @apply translate-x-full;
+  }
+
+  .mobile-menu-open {
+    @apply translate-x-0;
+  }
+
+  /* Responsive grid adjustments */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  /* Mobile-optimized cards */
+  .mobile-card {
+    @apply rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 active:scale-95;
+  }
+
+  /* Swipe indicators for carousels */
+  .swipe-indicator {
+    @apply absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-xs opacity-75;
+  }
+
+  /* Mobile-optimized buttons */
+  .mobile-btn {
+    @apply py-4 px-6 text-base font-semibold rounded-lg active:scale-95 transition-transform duration-100;
+  }
+
+  /* Responsive text scaling */
+  .responsive-text-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .responsive-text-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .responsive-text-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Mobile-friendly spacing */
+  .mobile-spacing {
+    @apply space-y-4 sm:space-y-6 lg:space-y-8;
+  }
+
+  /* Touch scroll indicators */
+  .scroll-indicator {
+    @apply flex justify-center space-x-2 py-4;
+  }
+
+  .scroll-dot {
+    @apply w-2 h-2 rounded-full bg-gray-300 transition-colors duration-200;
+  }
+
+  .scroll-dot-active {
+    @apply bg-bmw-blue;
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+  }
+
+  /* Staggered animations */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+  }
+
+  /* Interactive elements */
+  .interactive-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .interactive-scale:active {
+    transform: scale(0.98);
+  }
+
+  /* Loading states */
+  .loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .loading-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
