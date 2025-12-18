@@ -56,7 +56,7 @@ const Models: React.FC = () => {
 
   const fetchCars = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/cars?limit=100');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cars?limit=100`);
       if (response.ok) {
         const data = await response.json();
         setCars(data.data);
@@ -76,7 +76,7 @@ const Models: React.FC = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/cars/categories');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cars/categories`);
       if (response.ok) {
         const data = await response.json();
         const categoryOptions = [

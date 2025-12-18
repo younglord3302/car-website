@@ -42,7 +42,7 @@ The easiest way to get started is using Docker Compose:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/younglord3302/car-website.git
 cd car-website
 
 # Copy environment file
@@ -61,7 +61,7 @@ docker-compose up -d
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/younglord3302/car-website.git
    cd car-website
    ```
 
@@ -120,6 +120,40 @@ docker-compose up -d
    npm run build
    npm run preview  # or serve the dist folder with any static server
    ```
+
+### Vercel Deployment 🚀
+
+For Vercel deployment (frontend only):
+
+1. **Push to GitHub**
+   ```bash
+   cd car-website
+   deploy.bat  # This will initialize git, add files, commit and push
+   ```
+
+2. **Deploy on Vercel**
+   - Go to Vercel.com and import your GitHub repository
+   - Set build command: `npm run build`
+   - Set output directory: `dist`
+   - Add environment variable: `VITE_API_BASE_URL=https://your-backend-api.com`
+
+3. **Backend Deployment**
+   - Deploy backend to Railway, Render, or Heroku
+   - Update `VITE_API_BASE_URL` with your deployed backend URL
+
+### Troubleshooting
+
+#### PostCSS Build Error
+If you encounter PostCSS errors during build:
+
+1. Check `frontend/postcss.config.js` - it should use `tailwindcss: {}` not `@tailwindcss/postcss`
+2. Ensure all dependencies are installed: `npm install`
+3. Clear cache: `rm -rf node_modules/.cache` then `npm install`
+
+#### API Connection Issues
+- For local development: API calls use `http://localhost:5000`
+- For production: Set `VITE_API_BASE_URL` environment variable
+- All API calls automatically use the configured base URL
 
 ## 📁 Project Structure
 

@@ -53,7 +53,7 @@ const CarConfigurator: React.FC = () => {
 
   const fetchCarDetails = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/cars/${id}`);
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/cars/${id}`);
       if (response.ok) {
         const carData = await response.json();
         setCar(carData.data);
